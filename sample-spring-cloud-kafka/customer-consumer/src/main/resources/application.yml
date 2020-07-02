@@ -1,16 +1,16 @@
 server:
-  port: ${PORT:8080}
+  port: ${PORT:8081}
 
 spring:
   application:
-    name: customer-producer
+    name: customer-consumer
   cloud:
     stream:
       kafka:
         binder:
           brokers: localhost:9092
       bindings:
-        customer-output:
+        customer-input:
           destination: customer
           group: ${spring.application.name}
 
