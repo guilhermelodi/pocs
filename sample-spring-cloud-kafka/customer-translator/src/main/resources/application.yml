@@ -1,9 +1,9 @@
 server:
-  port: ${PORT:8081}
+  port: ${PORT:8082}
 
 spring:
   application:
-    name: customer-consumer
+    name: customer-translator
   cloud:
     stream:
       kafka:
@@ -15,12 +15,10 @@ spring:
           group: ${spring.application.name}
           consumer:
             useNativeDecoding: true
-        vip-customer-input:
+        vip-customer-output:
           destination: vip-customer
-          group: ${spring.application.name}
-          consumer:
-            useNativeDecoding: true
-
-
-
-
+          producer:
+            useNativeEncoding: true
+logging:
+  level:
+    org.springframework.kafka.config: debug

@@ -1,12 +1,8 @@
 package br.com.lodi.customer.config;
 
 import br.com.lodi.customer.channel.CustomerChannel;
-import br.com.lodi.customer.channel.VIPCustomerChannel;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
-@EnableBinding({
-        CustomerChannel.class,
-        VIPCustomerChannel.class
-})
+@EnableBinding(CustomerChannel.class)
 public class StreamsConfig {
 }

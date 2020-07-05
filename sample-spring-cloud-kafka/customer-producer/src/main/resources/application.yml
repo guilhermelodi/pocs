@@ -12,7 +12,6 @@ spring:
       bindings:
         customer-output:
           destination: customer
-          group: ${spring.application.name}
 
 
 
