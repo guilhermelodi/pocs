@@ -14,6 +14,6 @@ public interface NotifyRegistrationDepartamentChannel {
     MessageChannel output();
 
     @Input(INPUT)
-    SubscribableChannel simpleInput();
+    SubscribableChannel input();
 
 }
