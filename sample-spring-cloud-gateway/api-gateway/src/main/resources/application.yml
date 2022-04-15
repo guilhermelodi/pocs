@@ -1,0 +1,32 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    gateway:
+      # default-filters:
+      # - name: TestGlobalFilter
+      routes:
+        - id: store_route
+          uri: ${feign.url.store-api}
+          filters:
+            - RewritePath=/store-api/(?<path>.*), /$\{path}
+            # - name: TestPreFilter
+            # - name: TestPostFilter
+          predicates:
+            - Path=/store-api/**
+        - id: shipping_route
+          uri: http://localhost:8082
+          filters:
+            - RewritePath=/calc-shipping-api/(?<path>.*), /shipping/$\{path}
+          predicates:
+            - Path=/calc-shipping-api/**
+        - id: core_route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+          order: 99
+
+feign:
+  url:
+    store-api: http://localhost:8081

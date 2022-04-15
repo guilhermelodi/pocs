@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        sendNewUser-out-0:
+          destination: user
+        receiveNewUser-in-0:
+          destination: user
+      function:
+        definition: sendNewUser;receiveNewUser
